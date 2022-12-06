@@ -1,0 +1,12 @@
+#pagination_buttons {
+    text-align: center;
+}
+
+#pagination_buttons a {
+    margin: 0 20px;
+}
+
+#movie-list-filter {
+    margin-top: 50px !important;
+    margin-bottom: 50px;
+}

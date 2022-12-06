@@ -1,0 +1,55 @@
+<!-- This page will be redirected from any url if you are not logged in -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="general.css">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <title>登陆SDU Movie</title>
+</head>
+<body>
+
+<div class="box-form">
+    <h1 style = "text-align: center; font-size: 96px;"><i class="fas fa-film"></i></h1>
+    <h2 style = "text-align: center;">SDU Movie</h2>
+    <br>
+    <!-- Set the method to POST to avoid showing the username/password in the URL
+         The default action is disabled to allow your own implementation. -->
+
+    <form id="login_form" method="post" action="#">
+        <div class="form-group">
+            <label>用户名</label>
+            <input name = "username" required="required" type="text" class="form-control" placeholder="email@example.com">
+        </div>
+        <div class="form-group">
+            <label>密码</label>
+            <input name = "password" required="required" type="password" class="form-control" placeholder="输入密码">
+        </div>
+
+        <div class="form-group d-flex justify-content-center">
+            <div class="g-recaptcha" data-sitekey="6LeSHMEaAAAAAJU5RQ86a9OU3JWNTUrkNoTG8slu"></div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" value="Login">登陆</button>
+    </form>
+    <br>
+    <div id="login_error_message" style = "color: red; text-align: center;"></div>
+</div>
+
+    <!-- include jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- include our own JS file -->
+    <script src="./login.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="general.css">
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+  <title>管理员平台</title>
+</head>
+<body>
+
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <a class="navbar-brand" href="index.html">SDU Movie</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+
+    </ul>
+  </div>
+</nav>
+
+<!-- Add star success modal -->
+<div class="modal fade" id="add-star-success">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">添加演员结果</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class = "modal-body" id = "star-id-added">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">关闭</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Add movie modal -->
+<div class="modal fade" id="add-movie-modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">添加电影结果</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class = "modal-body" id = "add-movie-result"></div>
+      <div class = "modal-body" id = "add-movie-star"></div>
+      <div class = "modal-body" id = "add-movie-genre"></div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">关闭</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h1 class = "page-title">管理员平台</h1>
+
+  <h2>数据库元数据</h2>
+  <strong>movies table:</strong> id VARCHAR, title VARCHAR, year INTEGER, director VARCHAR<br>
+  <strong>stars table:</strong> id VARCHAR, name VARCHAR, birthYear INTEGER<br>
+  <strong>stars_in_movies table:</strong> starId VARCHAR, movieID VARCHAR<br>
+  <strong>genres table:</strong> id INTEGER, name VARCHAR<br>
+  <strong>genres_in_movies table:</strong> genreId INTEGER, movieId VARCHAR<br>
+  <strong>creditcards table:</strong> id VARCHAR, firstName VARCHAR, lastName VARCHAR, expiration DATE<br>
+  <strong>customers table:</strong> id INTEGER, firstName VARCHAR, lastName VARCHAR, ccId VARCHAR, address VARCHAR, email VARCHAR, password VARCHAR<br>
+  <strong>employees table:</strong> email VARCHAR, password VARCHAR, fullname VARCHAR<br>
+  <strong>sales table:</strong> id INTEGER, customerId INTEGER, movieId VARCHAR, saleDate DATE<br>
+  <strong>ratings table:</strong> movieId VARCHAR, rating FLOAT, numVotes INTEGER<br>
+
+  <hr style="margin: 50px;"></hr>
+
+
+  <h3>添加新演员</h3>
+  <form id="add-star-form" method="post" action="#">
+    <div class = "form-row">
+      <div class="col">
+        <div class="form-group">
+          <label>姓名</label>
+          <input name = "star-name" required="required" type="text" class="form-control">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label>年份</label>
+          <input name = "year" type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">提交</button>
+  </form>
+
+  <hr style="margin: 50px;"></hr>
+
+  <h3>添加新电影</h3>
+  <form id="add-movie-form" method="post" action="#">
+    <div class = "form-row">
+      <div class="col">
+        <div class="form-group">
+          <label>电影名称</label>
+          <input name = "movie-title" required="required" type="text" class="form-control">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label>导演</label>
+          <input name = "movie-director" required="required" type="text" class="form-control">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label>年份</label>
+          <input name = "movie-year" required="required" type="text" class="form-control">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label>流派</label>
+          <input name = "genre" required="required" type="text" class="form-control">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label>演员名称</label>
+          <input name = "star-name" required="required" type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+    <button type="submit" style="align-content: center;" class="btn btn-primary">提交</button>
+  </form>
+
+  <hr style="margin: 50px;"></hr>
+
+
+</div>
+<!-- Load jQuery and Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<!-- Load our own JS file -->
+<!-- The path is relative to index.html, since these two files are in the same directory -->
+<!-- Note the url does not contain a "/" in the beginning, which means the url is relative to current path
+     otherwise the url is relative to the root path-->
+<script src="./_dashboard.js"></script>
+</body>
+
+
+</html>
